@@ -17,21 +17,22 @@ calendR()
 ```
 
 ```{r}
-calendR(year = 2023)
+calendR(year = 2025)
 ```
 
 ```{r}
 calendR(month = 2L)
-# month = NULL print all months
+# month = NULL prints all months
 ```
 
 ```{r}
-calendR(start_date = "2022-02-12", end_date = "2022-05-28")
+calendR(from = "2025-01-01", to = "2025-01-15")
+# arguments start_date/end_date have been replaced with from/to 
 ```
 
 ```{r}
 calendR(month = 2L, start = "M")
-# Valid options: start = c("S", "M")
+# Valid options: start = c("S", "M"), "S" is the default
 ```
 
 ```{r}
@@ -57,7 +58,7 @@ calendR(month = 2L, start = "M",
 
 ```{r}
 calendR(month = 2L, start = "M", 
-        text = "Training", text.pos = c(1, 2, 9, 22, 25), 
+        text = "Workout", text.pos = c(1, 2, 9, 22, 25), 
         text.size = 4.5, text.col = "blue")
 ```
 
@@ -68,9 +69,9 @@ calendR(month = 2L, start = "M",
 ```
 
 ```{r}
-special_days_022022 <- sample(1:28, size = 10)
+special_days_rand <- sample(1:28, size = 10)
 calendR(month = 2L, start = "M",
-        special.days = special_days_022022, special.col = "lightblue")
+        special.days = special_days_rand, special.col = "lightblue")
 ```
 
 ```{r}
@@ -83,8 +84,8 @@ calendR(month = 2L, start = "M",
 ```{r}
 special_days_022022 <- sample(1:28, size = 10)
 calendR(month = 2L, start = "M",
-        special.days = special_days_022022, special.col = "yellow",
-        text = "Special \ndays!", text.pos = special_days_022022, 
+        special.days = special_days_rand, special.col = "yellow",
+        text = "Special \ndays", text.pos = special_days_rand, 
         text.size = 4.5, text.col = "red")
 ```
 
@@ -103,14 +104,14 @@ calendR(month = 2L, start = "M",
 ```{r}
 calendR(month = 2L, start = "M",
         weeknames = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"), 
-        weeknames.col = "orange", weeknames.size = 8)
+        weeknames.col = "orange", weeknames.size = 6)
 # Defaults: weeknames.col = "gray30", weeknames.size = 4.5
 ```
 
 ```{r}
 calendR(month = 2L, start = "M",
         weeknames = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"), 
-        weeknames.col = "orange", weeknames.size = 8,
+        weeknames.col = "orange", weeknames.size = 6,
         font.family = "mono", font.style = "bold")
 # Defaults: font.family = "sans", font.style = "plain"
 # font.style = c(plain", "bold", "italic", "bold.italic")
@@ -167,7 +168,7 @@ event_df
 ```
 
 ```{r}
-year2disp <- 2022
+year2disp <- 2025
 last_day <- as.Date(paste0(year2disp, "-12-31"))
 first_day <- as.Date(paste0(year2disp, "-01-01"))
 ndays <- as.numeric(difftime(last_day, first_day)) + 1
@@ -209,7 +210,7 @@ event_df
 ```
 
 ```{r}
-year2disp <- 2022
+year2disp <- 2025
 month2disp <- 2L
 last_day <- as.Date(paste0(year2disp, "-", month2disp, "-", 28))
 first_day <- as.Date(paste0(year2disp, "-", month2disp, "-", 1))
@@ -240,8 +241,9 @@ calendR(year = year2disp, month = month2disp, start = "M",
 ```
 
 ```{r}
-calendR(year = 2022, start = "M",
-        pdf = TRUE,
-        doc_name = "My_calendar")
+# This will save the calendar as PDF
+# calendR(year = 2025, start = "M",
+#         pdf = TRUE,
+#         doc_name = "My_calendar")
 # Defaults: pdf = FALSE, doc_name = "", papersize = "A4"
 ```
