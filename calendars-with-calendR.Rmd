@@ -2,38 +2,58 @@
 title: "Calendars in R with calendR"
 author: "Alex"
 date: "`r format(Sys.time(), '%d %B %Y, %H:%M:%S')`"
-output: html_document
+output: 
+  html_document:
+    df_print: paged
+    toc: true
+    number_sections: false
 ---
 
-Load packages
+Load packages.
 
 ```{r, message = FALSE}
 library(calendR)
 ```
 
+Print this year.
+
 ```{r}
 calendR()
-# The default is year = format(Sys.Date(), "%Y")
+# Default is year = format(Sys.Date(), "%Y")
 ```
 
-```{r}
-calendR(year = 2025)
-```
+Print any year.
 
 ```{r}
-calendR(month = 2L)
-# month = NULL prints all months
+calendR(year = 2000)
 ```
+
+Print a month.
+
+```{r}
+calendR(month = 2)
+# month: integer (NULL prints all months)
+```
+
+Print a time range.
 
 ```{r}
 calendR(from = "2025-01-01", to = "2025-01-15")
-# arguments start_date/end_date have been replaced with from/to 
 ```
 
+Start from Monday.
+
 ```{r}
-calendR(month = 2L, start = "M")
-# Valid options: start = c("S", "M"), "S" is the default
+calendR(month = 2, start = "M")  # default is "S"
 ```
+
+Choose between portrait/landscape view.
+
+```{r}
+calendR(orientation = "portrait")  # default is "landscape"
+```
+
+
 
 ```{r}
 calendR(month = 2L, start = "M", 
